@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Birthday Surprise</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background: linear-gradient(45deg, #a1c4fd);
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+/* Mobile friendly video */
+
+video{
+width:90%;
+max-width:400px;
+max-height:80vh;
+border-radius:15px;
+box-shadow:0 10px 25px rgba(0,0,0,0.3);
+object-fit:cover;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<video id="video1" controls autoplay>
+<source src="gif.mp4" type="video/mp4">
+</video>
+
+<video id="video2" style="display:none;" controls>
+<source src="sowv.mp4" type="video/mp4">
+</video>
+
+<script>
+
+let v1 = document.getElementById("video1");
+let v2 = document.getElementById("video2");
+
+/* When first video ends */
+
+v1.onended = function(){
+
+v1.style.display = "none";
+v2.style.display = "block";
+
+/* play second video */
+v2.play().catch(()=>{});
+
+};
+
+/* When second video ends */
+
+v2.onended = function(){
+
+window.location.href = "index.html";
+
+};
+
+</script>
+
+</body>
+</html>

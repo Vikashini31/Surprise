@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Birthday Surprise</title>
+
+<style>
+
+body{
+text-align:center;
+font-family:Arial;
+background: linear-gradient(45deg, #a1c4fd);
+color:white;
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+}
+
+#gift{
+font-size:100px;
+cursor:pointer;
+position:absolute;
+
+/* Start position (center) */
+top:50%;
+left:50%;
+
+/* Animation */
+animation: circleMove 6s linear infinite;
+text-shadow: 0 0 15px white, 0 0 30px pink;
+}
+
+@keyframes circleMove{
+0%   { transform: translate(-50%, -50%) rotate(0deg) translateX(150px) rotate(0deg); }
+
+100% { transform: translate(-50%, -50%) rotate(360deg) translateX(150px) rotate(-360deg); }
+}
+
+#gift:hover{
+transform:scale(1.2);
+}
+
+#countdown{
+font-size:100px;
+margin-top:20px;
+display:none;
+}
+
+</style>
+
+<script>
+
+function openGift(){
+
+document.getElementById("gift").style.display="none";
+
+let countdown=document.getElementById("countdown");
+countdown.style.display="block";
+
+let count=3;
+
+countdown.innerHTML=count;
+
+let timer=setInterval(function(){
+
+count--;
+countdown.innerHTML=count;
+
+if(count==0){
+
+clearInterval(timer);
+
+countdown.innerHTML="🎉";
+
+setTimeout(function(){
+window.location.href="start.html";
+},800);
+
+}
+
+},1000);
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+<h1> Hiii Birthday Girl!!!</h1>
+
+<p>Click that to go inside...</p>
+
+<div id="gift" onclick="openGift()">👻</div>
+
+<div id="countdown"></div>
+
+</body>
+</html>
